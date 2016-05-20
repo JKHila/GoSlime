@@ -81,21 +81,10 @@ public class NewBehaviourScript : MonoBehaviour
     // UnityGUI 표시
     void OnGUI()
     {
-        // 디버그 텍스트
-        GUI.TextField(new Rect(10, 10, 300, 60), "[Unity2D Sample 3-1 C]\n마우스 왼쪽 버튼을 누르면 점프!");
-        if (goalCheck)
-        {
-            GUI.TextField(new Rect(10, 100, 330, 60), string.Format("***** Goal!! *****\nTime {0}", goalTime));
-        }
-        // 리셋 버튼
+     
         if (GUI.Button(new Rect(10, 80, 100, 20), "리셋"))
         {
             Application.LoadLevel(Application.loadedLevelName);
-        }
-        // 메뉴로 돌아간다
-        if (GUI.Button(new Rect(10, 110, 100, 20), "메뉴"))
-        {
-            Application.LoadLevel("SelectMenu");
         }
     }
 
