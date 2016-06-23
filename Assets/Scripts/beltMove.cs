@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class move : MonoBehaviour {
+public class beltMove : MonoBehaviour {
 
-    public float _speed;
+    private float _speed = -4.0f;
     public GameObject _EnemySetObj;
     // Use this for initialization
     void Start()
@@ -14,7 +14,7 @@ public class move : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-		if (this.transform.position.x <= -10.0f) {
+		if (this.transform.position.x <= -15.0f) {
 			Destroy (this.gameObject); //belt삭제
 		}
         transform.Translate(_speed * Time.deltaTime, 0, 0);
