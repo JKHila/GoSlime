@@ -3,7 +3,7 @@ using System.Collections;
 
 public class beltMove : MonoBehaviour {
 
-    private float _speed = -4.0f;
+    public static float _speed = -1.0f;
     public GameObject _EnemySetObj;
     // Use this for initialization
     void Start()

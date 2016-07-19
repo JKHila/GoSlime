@@ -28,8 +28,8 @@ public class ButtonDowned : MonoBehaviour {
                 {
                     case "Button_Red": pressedBtn = 0; sr = btn[0].GetComponent<SpriteRenderer>(); sr.color = new Color(150, 150, 150,255);  break;
                     case "Button_Green": pressedBtn = 1; sr = btn[1].GetComponent<SpriteRenderer>(); sr.color = new Color(150, 150, 150, 255); break;
-                    case "Button_Yellow": pressedBtn = 2; sr = btn[2].GetComponent<SpriteRenderer>(); sr.color = new Color(150, 150, 150, 255); break;
-                    case "Button_Blue": pressedBtn = 3; sr = btn[3].GetComponent<SpriteRenderer>(); sr.color = new Color(150, 150, 150, 255); break;
+                    case "Button_Blue":pressedBtn = 2; sr = btn[2].GetComponent<SpriteRenderer>(); sr.color = new Color(150, 150, 150, 255); break;
+                    case "Button_Yellow": pressedBtn = 3; sr = btn[3].GetComponent<SpriteRenderer>(); sr.color = new Color(150, 150, 150, 255); break;
                 }
                 int curBeltNum = bt.getNextBeltNum();
 
