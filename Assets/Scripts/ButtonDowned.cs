@@ -33,13 +33,20 @@ public class ButtonDowned : MonoBehaviour {
                 }
                 int curBeltNum = bt.getNextBeltNum();
 
-                if (pressedBtn == curBeltNum)
+                if (pressedBtn == curBeltNum && tmp.Contains("Button"))
                 {
                     slime.jump(bt.getNextBeltObj());
                     bt.correct();
                 }
-                else
+                else if(pressedBtn != curBeltNum && !tmp.Contains("Button"))
+                {
+
+                }
+                else if (pressedBtn != curBeltNum && tmp.Contains("Button"))
+                {
                     slime.fail();
+                }
+                  
             }
         }
         else if (Input.GetMouseButtonUp(0))

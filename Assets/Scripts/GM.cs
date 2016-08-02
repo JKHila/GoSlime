@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+﻿/*using UnityEngine;
 using System.Collections;
 
 public class GM : MonoBehaviour
@@ -35,4 +35,4 @@ public class GM : MonoBehaviour
         }
 
     }
-}
+}*/

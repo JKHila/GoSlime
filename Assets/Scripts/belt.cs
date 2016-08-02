@@ -70,7 +70,7 @@ public class belt : MonoBehaviour {
     {
         if (isStart && !player.GetComponent<SlimeMove>().isJumping && player.transform.position.x > curBelt.getObj().transform.position.x) //시작o & 점프x & 슬라임위치가 현재벨트보다 더 앞에있을때
         {
-            player.transform.position = new Vector2(curBelt.getObj().transform.position.x, player.transform.position.y); //플레이어의 위치를 현재벨트에 맞춤
+            player.transform.position = new Vector2(curBelt.getObj().transform.position.x+0.1f, player.transform.position.y); //플레이어의 위치를 현재벨트에 맞춤
         }
     }
     /*GameObject m(Vector3 a)
@@ -81,7 +81,7 @@ public class belt : MonoBehaviour {
         Set1.transform.localPosition = a;
         return Set1;
     }*/
-    Vector3 position = new Vector3(9.5f, -1.57f, 0);
+    Vector3 position = new Vector3(9.5f, -2.52f, 0);
     private int[,] stage = new int[,] { 
         { 0, 1, 2, 3, 0, 1, 3, 2, 0, 2, 1, 3, 0, 2, 3, 1, 0, 3, 2, 1, 0, 3, 1, 2 },
         { 0, 2, 2, 0, 0, 1, 1, 0, 0, 3, 3, 0, 2, 0, 0, 2, 2, 1, 1, 2, 2, 3, 3, 2 }
@@ -93,7 +93,7 @@ public class belt : MonoBehaviour {
         start.transform.parent = _PlayerObjPool;//클론을 벨트안에 넣어 보기 편하게
         beltAttribute tpbt = new beltAttribute(bta[4].getNum(), start); // 검은타일 저장
         curBelt = tpbt; // 설정
-        yield return new WaitUntil(() => start.transform.position.x < 8.6f); // 타일길이맞춤
+        yield return new WaitUntil(() => start.transform.position.x <= 8.589f); // 타일길이맞춤
         isStart = true;//시작
         while (true) {
             var set1 = Instantiate (bta[stage[stgN, count]].getObj(), position, Quaternion.identity) as GameObject; //패턴에서 패널을뽑아 초기위치에 배치하고 회전은 없음
@@ -111,7 +111,7 @@ public class belt : MonoBehaviour {
             {
                 count = 0;
             }
-            yield return new WaitUntil(() => set1.transform.position.x <= 8.6f); //타일길이맞춤
+            yield return new WaitUntil(() => set1.transform.position.x <= 8.589f); //타일길이맞춤
 		}
 	}
 }
