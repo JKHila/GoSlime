@@ -14,7 +14,7 @@ public class beltMove : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-		if (this.transform.position.x <= -15.0f) {
+		if (this.transform.position.x <= -13.0f) {
 			Destroy (this.gameObject); //belt삭제
 		}
         transform.Translate(_speed * Time.deltaTime, 0, 0);
