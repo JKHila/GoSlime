@@ -73,25 +73,30 @@ public class belt : MonoBehaviour {
             player.transform.position = new Vector2(curBelt.getObj().transform.position.x+0.1f, player.transform.position.y); //플레이어의 위치를 현재벨트에 맞춤
         }
     }
-
+    public int[] temp = new int[8] { 0,0,3,3,1,1,2,2};
     Vector3 position = new Vector3(9.5f, -2.1f, 0);
-    private int[,] stage = new int[,] { 
-        { 0, 1, 2, 3, 0, 1, 3, 2, 0, 2, 1, 3, 0, 2, 3, 1, 0, 3, 2, 1, 0, 3, 1, 2 },
-        { 0, 2, 2, 0, 0, 1, 1, 0, 0, 3, 3, 0, 2, 0, 0, 2, 2, 1, 1, 2, 2, 3, 3, 2 }
-    };
-    public static int stgN = 0;
-    public static int count = 0;
+    public int RandomIdx2()
+    {
+        
+        int RandNum = Random.Range(0, 4);
+            
+        return RandNum;
+    }
     IEnumerator spawnBelt(){
         var start = Instantiate(bta[4].getObj(), position, Quaternion.identity) as GameObject;
         start.transform.parent = _PlayerObjPool;//클론을 벨트안에 넣어 보기 편하게
         beltAttribute tpbt = new beltAttribute(bta[4].getNum(), start); // 검은타일 저장
         curBelt = tpbt; // 설정
-        yield return new WaitUntil(() => start.transform.position.x <= 8.589f); // 타일길이맞춤
+        yield return new WaitUntil(() => start.transform.position.x <= 8.7f); // 타일길이맞춤
         isStart = true;//시작
+        int i = 0;
         while (true) {
-            var set1 = Instantiate (bta[stage[stgN, count]].getObj(), position, Quaternion.identity) as GameObject; //패턴에서 패널을뽑아 초기위치에 배치하고 회전은 없음
+            int test = RandomIdx2();
+            var set1 = Instantiate (bta[temp[i]].getObj(), position, Quaternion.identity) as GameObject; //패턴에서 패널을뽑아 초기위치에 배치
+            //var set1 = Instantiate (bta[test].getObj(), position, Quaternion.identity) as GameObject; //패턴에서 패널을뽑아 초기위치에 배치
 			set1.transform.parent = _PlayerObjPool;// 마찬가지로 벨트안에 넣어 보기 편하게
-            tpbt = new beltAttribute(bta[stage[stgN, count]].getNum(), set1); // 뽑은타일 저장
+            tpbt = new beltAttribute(bta[temp[i]].getNum(), set1); // 뽑은타일 저장
+            //tpbt = new beltAttribute(bta[test].getNum(), set1); // 뽑은타일 저장
             beltList.Enqueue(tpbt); // 타일을 큐에 넣음
            // Debug.Log(beltList.Peek());
             if (nextBelt == null) // 다음벨트가없으면
@@ -99,12 +104,12 @@ public class belt : MonoBehaviour {
                 nextBelt = beltList.Dequeue() as beltAttribute; //큐에 저장된 타일을 다음타일로 설정
             }
 
-            count++;
-            if (count == 24)
+            i++;
+            if(i==8)
             {
-                count = 0;
+                i = 0;
             }
-            yield return new WaitUntil(() => set1.transform.position.x <= 8.589f); //타일길이맞춤
+            yield return new WaitUntil(() => set1.transform.position.x <= 8.7f); //타일길이맞춤
 		}
 	}
 }
